@@ -1,5 +1,7 @@
 #Classification of CellData
 
+The first experiment was performed with some zeros in the cells that slightly increased the average intensities for the thresholds. In the second experiment, these zeros are encountered for with no or little changes to the results.
+
 Logistic Regression:
 - reg = .33, train_error = 0.944539648041
 
@@ -67,8 +69,15 @@ Using Random Forest for 3 Color Channels (K=30):
 
 
 
+
 SVM and PCA
 - 94.6%
+
+
+Experiment 2:
+Unique labels are: [ 0.  1.  2.  3.  4.]
+Label Frequencies are: [ 4137  1833 11191 14506  1196]
+
 
 
 ToDos:

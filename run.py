@@ -1,7 +1,7 @@
 from data_tools import *
 from algorithms import *
 from plot_lib import *
-from nets import *
+# from nets import *
 from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
 from sklearn.feature_selection import RFE
 from sklearn import preprocessing
@@ -10,8 +10,16 @@ import code
 
 
 # Loading the data into X, y
-DATA = loadnumpy("data.npy").astype(np.float64)
-ground_truth = loadnumpy("labels.npy").astype(int)
+DATA = loadnumpy("data_no_zeros.npy").astype(np.float64)
+ground_truth = loadnumpy("labels_no_zeros.npy").astype(int)
+print "Loaded data and ground_truth of exp 1."
+
+# DATA2 = loadnumpy("data.npy").astype(np.float64)
+# ground_truth2 = loadnumpy("labels.npy").astype(int)
+# print "Loaded data and ground_truth of exp 1"
+
+
+
 # DATA = preprocessing.scale(DATA)
 
 X_train, X_test, y_train, y_test = train_test_split(DATA, ground_truth, test_size=0.33, random_state=42)
@@ -21,16 +29,15 @@ for i in xrange(DATA.shape[1]):
 	DATA[:,i] = (DATA[:,i] - np.mean(DATA[:,i]))/(np.max(DATA[:,i])-np.min(DATA[:,i])+.001)
 
 
-print "Shuffled data and split in train / test"
+print "Shuffled data and split in train-/testset."
 
 # Perform PCA: 
-th = 5
-pca = PCA()
-X_train = pca.fit_transform(X_train)
-X_test = pca.transform(X_test)
+# th = 5
+# pca = PCA()
+# X_train = pca.fit_transform(X_train)
+# X_test = pca.transform(X_test)
+# print "PCA done"
 # plot3d(X_train[::th,:], ground_truth[::th], "PCA")
-
-print "PCA done"
 
 # m = X.shape[0]
 # m_test = X_test.shape[0]
@@ -116,12 +123,11 @@ cv = 7
 # y_pred = k_nn.predict(X_test)
 
 # Random Forest:
-# Number of Trees K: K = 30 -> 95%, K = 100 -> 96% 
-# K = 100
-# rf = randForest(X_train, y_train, K)
-# print "The train accuracy of Random Forest is", np.mean(cross_val_score(rf, X_train, y_train, cv=cv))
-# y_pred = rf.predict(X_test)
-# plotConfusionMatrix(y_test, y_pred)
+K = 30
+rf = randForest(X_train, y_train, K)
+print "The train accuracy of Random Forest is", np.mean(cross_val_score(rf, X_train, y_train, cv=cv))
+y_pred = rf.predict(X_test)
+plotConfusionMatrix(y_test, y_pred)
 
 
 
@@ -131,35 +137,9 @@ cv = 7
 
 # Fully Connected Net:
 # After 100 epoqs achieved accuracy of 99.98% on training, Test_accuracy is 97% - Overfit
-y = y_train.T 
-model = fullyConnectedNet(X_train, y, epochs = 20)
-results = model.predict(X_test)
-y_pred = np.zeros([results.shape[0]])
-for i in xrange(results.shape[0]):
-	y_pred[i] = np.argmax(results[i,:]).astype(int)
-
-
-# Plotting wrong predicted images
-# y = y.T 
-# model = fullyConnectedNet(X, y, epochs = 9)
-# results = model.predict(X)
-# y_pred = np.zeros([results.shape[0]])
-# for i in xrange(results.shape[0]):
-# 	y_pred[i] = np.argmax(results[i,:]).astype(int)
-# 	if y_pred[i] != y[i]:
-# 		plotImage(X_original, i, label = np.array_str(results[i]))
-
-
-
-
-# First CovNet:
-# Train Accuracy = 99.6%
-# Test Accuracy = 98.8%
-# X_ = X.reshape(X.shape[0], 28, 28, 1)
-# X_test_ = X_test.reshape(X_test.shape[0], 28, 28, 1)
-# # default epochs: 12
-# model = covNet(X_, y, batch_size = 128, epochs = 12)
-# results = model.predict(X_test_)
+# y = y_train.T 
+# model = fullyConnectedNet(X_train, y, epochs = 20)
+# results = model.predict(X_test)
 # y_pred = np.zeros([results.shape[0]])
 # for i in xrange(results.shape[0]):
 # 	y_pred[i] = np.argmax(results[i,:]).astype(int)

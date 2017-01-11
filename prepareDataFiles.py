@@ -4,12 +4,12 @@ import code
 
 path_to_data = '/Volumes/MoritzBertholdHD/CellData/featureExtractionCellProfiler/extracted_data/'
 
-ch1 = pd.DataFrame.from_csv(path_to_data + 'data_ch1.csv', header=0, sep=',', index_col=None)
-ch2 = pd.DataFrame.from_csv(path_to_data + 'data_ch2.csv', header=0, sep=',', index_col=None)
-ch3 = pd.DataFrame.from_csv(path_to_data + 'data_ch3.csv', header=0, sep=',', index_col=None)
-ch4 = pd.DataFrame.from_csv(path_to_data + 'data_ch4.csv', header=0, sep=',', index_col=None)
+ch1 = pd.DataFrame.from_csv(path_to_data + 'data_ch1_no_zeros.csv', header=0, sep=',', index_col=None)
+ch2 = pd.DataFrame.from_csv(path_to_data + 'data_ch2_no_zeros.csv', header=0, sep=',', index_col=None)
+ch3 = pd.DataFrame.from_csv(path_to_data + 'data_ch3_no_zeros.csv', header=0, sep=',', index_col=None)
+ch4 = pd.DataFrame.from_csv(path_to_data + 'data_ch4_no_zeros.csv', header=0, sep=',', index_col=None)
 
-# +1 to the channel you want to drop
+# +1 to the features you want to drop
 drop_cols_labels = [0, 1, 11, 22, 23, 24, 25, 26, 27, 28, 29]
 
 ch1 = ch1[pd.notnull(ch1['image_filenames'])]
@@ -30,12 +30,12 @@ data = pd.concat([ch1, ch2, ch3, ch4], axis=1)
 data_numpy = data.iloc[:,:].values
 y_numpy = y.iloc[:].values
 
-np.save('data.npy', data_numpy, allow_pickle=True, fix_imports=True)
-np.save('labels.npy', y_numpy, allow_pickle=True, fix_imports=True)
+np.save('data_no_zeros.npy', data_numpy, allow_pickle=True, fix_imports=True)
+np.save('labels_no_zeros.npy', y_numpy, allow_pickle=True, fix_imports=True)
 
 
 
-code.interact(local=dict(globals(), **locals()))
+# code.interact(local=dict(globals(), **locals()))
 
 
 # access entries:

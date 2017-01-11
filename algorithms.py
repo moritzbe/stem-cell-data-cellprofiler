@@ -65,7 +65,7 @@ def lda(X, y, n):
 #-------------------------------------------------#
 def randForest(X, y, K=10):
 	# typical K = 10, 30, 100, the higher, the better!
-	rf = RandomForestClassifier(n_estimators=K, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, max_leaf_nodes=None, min_impurity_split=1e-07, bootstrap=True, oob_score=False, verbose=0)
+	rf = RandomForestClassifier(n_estimators=K, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features=None, max_leaf_nodes=None, min_impurity_split=1e-07, bootstrap=True, oob_score=False, verbose=1)
 	rf.fit(X, y)
 	return rf
 
