@@ -21,7 +21,7 @@ Random Forest:
 - PCA and Random Forest, K = 30, train_error = 0.85
 
 
-Using Random Forest for 3 Color Channels (K=30): 
+Using Random Forest for 1 Color Channels (K=30): 
 - Channel 1: accuracy = 54%
 [[  0.00000000e+00   0.00000000e+00   1.00000000e+00   2.00000000e+00
     3.00000000e+00]
@@ -68,10 +68,9 @@ Using Random Forest for 3 Color Channels (K=30):
     2.47700000e+03]]
 
 
-
-
 SVM and PCA
 - 94.6%
+
 
 
 Experiment 2:
@@ -85,3 +84,20 @@ ToDos:
 - check dataextraction (any labels in the data?)
 - normalization
 - find the most discerning features
+
+## Inception using AlexNet on Ch1,Ch2,Ch3, Predicting 5 classes (not 4 like with cellprofiler)
+- Random Forest: Normalization, PCA reducing feature dimesnions to 100, K=30 produces 73% accuracy.
+[[  0.00000000e+00   0.00000000e+00   1.00000000e+00   2.00000000e+00
+    3.00000000e+00   4.00000000e+00]
+ [  0.00000000e+00   6.87000000e+02   1.00000000e+00   3.15000000e+02
+    6.10000000e+01   2.00000000e+00]
+ [  1.00000000e+00   3.80000000e+01   9.40000000e+01   3.10000000e+01
+    2.78000000e+02   3.40000000e+01]
+ [  2.00000000e+00   2.76000000e+02   2.00000000e+00   2.21300000e+03
+    2.32000000e+02   5.00000000e+00]
+ [  3.00000000e+00   7.10000000e+01   3.10000000e+01   4.85000000e+02
+    3.05300000e+03   5.60000000e+01]
+ [  4.00000000e+00   1.20000000e+01   1.00000000e+01   5.20000000e+01
+    2.09000000e+02   1.68000000e+02]]
+
+- Logistic Regression, Normalization, PCA reducing feature dimesnions to 300, reg=1 produces 79% accuracy. Removing the last class gives 82% accuracy.

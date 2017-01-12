@@ -13,7 +13,7 @@ from sklearn.ensemble import RandomForestClassifier
 #---------------Log Regression--------------------#
 #-------------------------------------------------#
 def logRegress(X,y,c):
-	log_reg = linear_model.LogisticRegression(penalty='l2', dual=False, tol=0.0001, C=c, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None, solver='liblinear', max_iter=100, multi_class='ovr', verbose=0, warm_start=False, n_jobs=1)
+	log_reg = linear_model.LogisticRegression(penalty='l2', dual=False, tol=0.0001, C=c, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None, solver='liblinear', max_iter=100, multi_class='ovr', verbose=1, warm_start=False, n_jobs=1)
 
 	log_reg.fit(X, y)
 	return log_reg 
