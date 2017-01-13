@@ -27,6 +27,11 @@ def addOffset(X):
 	X = np.c_[np.ones((X.shape[0],1)), X]
 	return X
 
+def normalize(DATA):
+	for i in xrange(DATA.shape[1]):
+		DATA[:,i] = (DATA[:,i] - np.mean(DATA[:,i]))/(np.max(DATA[:,i])-np.min(DATA[:,i])+.001)
+	return DATA
+
 
 def saveToCSV(y, alg_name="alg"):
 	ImageId = []
@@ -87,8 +92,10 @@ def plotNiceConfusionMatrix(y_test, y_pred, class_names):
 	np.set_printoptions(precision=2)
 
 	# Plot non-normalized confusion matrix
-	plt.figure()
+	fig = plt.figure()
 	conf_M(cnf_matrix, classes=class_names, title='Confusion matrix, without normalization')
+	fig.set_tight_layout(True)
+	
 	plt.show()
 
 def accuracy(y_test, pred):
@@ -97,7 +104,7 @@ def accuracy(y_test, pred):
 		if y_test[i] == pred[i]:
 			rights += 1
 	accuracy = float(rights) / float(len(y_test))
-	return round(accuracy, 2)
+	return round(accuracy, 4)*100
 
 
 

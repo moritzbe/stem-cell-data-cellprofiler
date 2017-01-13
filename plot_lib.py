@@ -39,4 +39,14 @@ def plotImage(X, entry, label = None):
 	plt.title('Scores are {label}'.format(label=label))
 	plt.imshow(img, cmap='gray')
 	plt.show()
+
+def plotHistogram(x, bins, xlabel, ylabel, title):
+	# the histogram of the data
+	n, bins, patches = plt.hist(x, bins)
+	plt.xlabel(xlabel)
+	plt.ylabel(ylabel)
+	plt.title(title)
+	# plt.axis([xmin, xmax, ymin, ymax])
+	plt.grid(True)
+	plt.show()
 	

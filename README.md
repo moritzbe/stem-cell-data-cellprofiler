@@ -77,6 +77,10 @@ Experiment 2:
 Unique labels are: [ 0.  1.  2.  3.  4.]
 Label Frequencies are: [ 4137  1833 11191 14506  1196]
 
+Experiment 3:
+Unique labels are: [ 0.  1.  2.  3.  4.]
+Label Frequencies are: [ 5775  2162 12133 14021  1225]
+
 
 
 ToDos:
