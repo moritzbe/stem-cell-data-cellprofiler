@@ -105,3 +105,26 @@ ToDos:
     2.09000000e+02   1.68000000e+02]]
 
 - Logistic Regression, Normalization, PCA reducing feature dimesnions to 300, reg=1 produces 79% accuracy. Removing the last class gives 82% accuracy.
+
+
+## Experiments, cv=5:
+# 1-st pretest 
+17.01.17:
+K = 30, n_features = 30
+96% accuracy on Train and Testset
+
+# 1st 
+17.01.17:
+K = 500, n_features = "auto"
+96.4% accuracy on Train and 96.7% on Testset
+
+# 2nd 
+17.01.17:
+K = 500, n_features = 10
+96.0% accuracy on Train and 96.3% on Testset
+
+# 3rd 
+17.01.17:
+K = 500, n_features = 200
+96.8% accuracy on Train and 97.1% on Testset
+
