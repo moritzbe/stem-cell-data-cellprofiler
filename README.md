@@ -125,6 +125,15 @@ K = 500, n_features = 10
 
 # 3rd 
 17.01.17:
-K = 500, n_features = 200
-96.8% accuracy on Train and 97.1% on Testset
+K = 500, n_features = 100
+96.9% accuracy on Train and 97.1% on Testset
 
+# 4rd 
+17.01.17:
+K = 500, n_features = 200
+96.6% accuracy on Train and 97.0% on Testset
+
+# 4rd 
+17.01.17:
+K = 1000, n_features = 100
+not better...
