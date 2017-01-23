@@ -30,10 +30,14 @@ print "Loaded data and ground_truth of exp 1 and 2."
 
 print "The test data will be the data of exp 2."
 print "Single channel is omitted"
-X_train = DATA[:,77:]
-DATA_ex2 = DATA_ex2[:,77:]
+
+X_train = DATA[:,:228]
+print X_train.shape
+DATA_ex2 = DATA_ex2[:,:228]
 y_train = ground_truth
-# DATA = DATA[:,77:]
+
+# np.hstack((DATA[:,0:152], DATA[:,229:]))
+# DATA = DATA[:,77:] - > 96.5% accuracy
 # DATA = DATA[:,[0:76],[153:]]
 # DATA = DATA[:,[0:152],[229:]]
 # DATA = DATA[:,:228]
