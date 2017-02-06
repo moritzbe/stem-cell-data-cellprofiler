@@ -59,15 +59,14 @@ print "---------------------------------------"
 print "Predicting on exp. 2:"
 y_pred_ex2 = rf.predict(DATA_ex2)
 print "The prediction accuracy on exp. 2 is " + str(accuracy(ground_truth_ex2, y_pred_ex2)) + "%."
-code.interact(local=dict(globals(), **locals()))
-
 print "---------------------------------------"
 print "Predicting on exp. 3:"
 y_pred_ex3 = rf.predict(DATA_ex3)
 print "The prediction accuracy on exp. 3 is " + str(accuracy(ground_truth_ex3, y_pred_ex3)) + "%."
+
 code.interact(local=dict(globals(), **locals()))
-plotNiceConfusionMatrix(ground_truth_ex2, y_pred_ex2, class_names)
 plotNiceConfusionMatrix(ground_truth_ex3, y_pred_ex3, class_names)
+plotNiceConfusionMatrix(ground_truth_ex2, y_pred_ex2, class_names)
 
 
 

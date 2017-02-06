@@ -23,7 +23,6 @@ ch3.drop(ch3.columns[drop_cols_labels],axis=1,inplace=True)
 ch4 = ch4[pd.notnull(ch4['image_filenames'])]
 ch4.drop(ch4.columns[drop_cols_labels],axis=1,inplace=True)
 
-
 data = pd.concat([ch1, ch2, ch3, ch4], axis=1)
 
 # To numpy
