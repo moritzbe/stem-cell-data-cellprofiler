@@ -93,7 +93,7 @@ def plotNiceConfusionMatrix(y_test, y_pred, class_names):
 
 	# Plot non-normalized confusion matrix
 	fig = plt.figure()
-	conf_M(cnf_matrix, classes=class_names, title='Confusion matrix, without normalization')
+	conf_M(cnf_matrix, classes=class_names, title='Confusion matrix')
 	fig.set_tight_layout(True)
 	
 	plt.show()

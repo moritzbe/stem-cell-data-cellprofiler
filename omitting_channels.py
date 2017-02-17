@@ -16,7 +16,7 @@ ground_truth = loadnumpy("labels_no_zeros.npy").astype(int)
 DATA_ex2 = loadnumpy("ex_2_data_no_zeros.npy").astype(np.float64)
 ground_truth_ex2 = loadnumpy("ex_2_labels_no_zeros.npy").astype(int)
 
-DATA_ex3 = loadnumpy("ex_3_data_no_zeros.npy").astype(np.float64)[:,76:152]
+DATA_ex3 = loadnumpy("ex_3_data_no_zeros.npy").astype(np.float64)
 ground_truth_ex3 = loadnumpy("ex_3_labels_no_zeros.npy").astype(int)
 
 
@@ -74,4 +74,4 @@ y_pred_ex3 = rf.predict(DATA_ex3)
 print "The prediction accuracy on exp. 3 is " + str(accuracy(ground_truth_ex3, y_pred_ex3)) + "%."
 
 code.interact(local=dict(globals(), **locals()))
-plotNiceConfusionMatrix(ground_truth_ex3, y_pred_ex3, class_names)
+plotNiceConfusionMatrix(ground_truth_ex2, y_pred_ex2, class_names)

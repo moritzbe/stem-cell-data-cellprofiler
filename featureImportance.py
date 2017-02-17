@@ -64,6 +64,7 @@ print total_importances[total_importances.argsort()[-n_max_features:][::-1]]
 
 
 code.interact(local=dict(globals(), **locals()))
+least = total_importances.argsort()[n_max_features:][::-1]
 
 # calculate correlation between features
 # take most important, set max_features None
