@@ -4,7 +4,7 @@ from plot_lib import *
 # from nets import *
 from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
 from sklearn.feature_selection import RFE
-from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn import preprocessing
 import numpy as np
 import code 
@@ -35,7 +35,8 @@ for entries in data_entries:
 	print "Shuffled data and split in train-/testset."
 	# Feature importance selection
 	K = 500
-	clf = ExtraTreesClassifier(n_estimators = K, max_features = "sqrt", verbose = 1)
+	# clf = ExtraTreesClassifier(n_estimators = K, max_features = "sqrt", verbose = 1)
+	clf = RandomForestClassifier(n_estimators = K, max_features = "sqrt", verbose = 1)
 	clf = clf.fit(X_train, y_train)
 	print "Feature importances are:", clf.feature_importances_
 	print "Mean feature importance is:", np.mean(clf.feature_importances_)
@@ -48,6 +49,7 @@ for entries in data_entries:
 	print "(listed in order of magnitude)"
 	print "--------------------------------"
 	print "Importance of the single channels by summing importance scores:"
+	# Indices alsways run [start, finish] - excluding finish!
 	ch1 = np.sum(clf.feature_importances_[0:76])/np.sum(clf.feature_importances_)*100
 	ch2 = np.sum(clf.feature_importances_[76:152])/np.sum(clf.feature_importances_)*100
 	ch3 = np.sum(clf.feature_importances_[152:228])/np.sum(clf.feature_importances_)*100
@@ -65,7 +67,7 @@ print total_importances[total_importances.argsort()[-n_max_features:][::-1]]
 
 code.interact(local=dict(globals(), **locals()))
 least = total_importances.argsort()[n_max_features:][::-1]
-
+most = total_importances.argsort()[-n_max_features:][::-1]
 # calculate correlation between features
 # take most important, set max_features None
 # Lasso
